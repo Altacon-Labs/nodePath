@@ -51,3 +51,9 @@ See [architecture](docs/architecture.md), [API](docs/api.md), [roadmap](docs/roa
 See [contribution guide](CONTRIBUTING.md), [design system](docs/design-system.md), [community conduct](CODE_OF_CONDUCT.md) and [security reporting](SECURITY.md). The UI uses Manrope, Phosphor icons, 8-point spacing, reusable components, toasts and empty states. Cards are borderless; no pills or badges are used.
 
 Licensing: the original repository contains no license. The owner must choose a license before this can be represented as a licensed open-source project. Third-party fonts and icons retain their upstream licenses; see THIRD_PARTY_NOTICES.md.
+
+Appearance: use the top-bar selector for System, Light or Dark. Your choice is remembered in this browser. Login and sign-up are not implemented; this remains a demo workspace.
+
+## Account screens
+
+Open /sign-up or /login for the split-layout account previews. Both support system/light/dark themes, field validation, password visibility and toast feedback. These are demo UI flows: no credentials are sent or persisted and no accounts or sessions are created. Do not enter real credentials. A production authentication backend remains unimplemented.

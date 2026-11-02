@@ -26,3 +26,7 @@ Keep loading status visible and use aria-busy. Empty states need a clear title, 
 ## Analytics workspace refinement
 
 Use a warm neutral canvas, white borderless panels, charcoal text and a restrained terracotta chart accent. Keep a compact workspace sidebar, clear page hierarchy, tabular numeric alignment and quiet contextual labels. Charts and tables take priority over decoration. The activity chart and cohort table are reusable component factories with explicit illustrative data labels. Chart SVGs are data visualizations, not icons; UI icons remain Phosphor only. The period selector changes the plotted sample window and CSV export downloads the displayed cohort fixture.
+
+## Appearance
+
+The top bar provides System, Light and Dark options. System is the default; explicit choices persist locally and synchronize between tabs. A blocking local theme initializer applies the choice before CSS loads. Storage failures safely fall back to in-memory preferences. Semantic theme tokens cover navigation, controls, cards, chart axes/area/line, cohort heatmap, icons, focus styles and toast surfaces. Theme controls use text rather than additional icon assets.

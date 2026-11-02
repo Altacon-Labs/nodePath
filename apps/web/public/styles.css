@@ -14,3 +14,10 @@
 
 
 .sr-only{position:absolute;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}
+
+/* Shared appearance tokens: every surface and visualization follows the theme. */
+:root{--sidebar:#eeefeb;--topbar:#fafaf7;--hover:#e1e4dd;--secondary:#eeefea;--reading:#e9ece3;--reading-rule:#dce1d3;--chart-grid:#eceee8;--chart-fill:#f7e9df;--chart-line:#b65132;--button:#242a27;--button-text:#fff;--toast-text:#fff;--toast-icon:invert(1);--icon-filter:none;--heat-rgb:163,187,140}
+:root[data-theme="dark"]{color-scheme:dark;--bg:#141816;--surface:#1d2420;--raised:#dce5dc;--text:#e9eee8;--muted:#b0bcb2;--accent:#f0a78a;--sidebar:#181e1a;--topbar:#181e1a;--hover:#2a352c;--secondary:#303b32;--reading:#263127;--reading-rule:#40533f;--chart-grid:#344036;--chart-fill:#382c24;--chart-line:#ecaa87;--button:#dce5dc;--button-text:#17201a;--toast-text:#17201a;--toast-icon:none;--icon-filter:invert(.85);--heat-rgb:65,105,64}
+.sidebar{background:var(--sidebar)}.topbar{background:var(--topbar)}nav a:hover,nav a:focus-visible{background:var(--hover)}button{background:var(--button);color:var(--button-text)}select,.secondary,.empty-state button{background:var(--secondary);color:var(--text)}.reading-panel{background:var(--reading)}.reading-rule{background:var(--reading-rule)}.icon{filter:var(--icon-filter)}.empty-state .icon{filter:var(--icon-filter);opacity:.65}.toast p{color:var(--toast-text)}.toast button{color:var(--toast-text);background:transparent}.toast .icon{filter:var(--toast-icon)}.skip-link{background:var(--surface)}td.heat{background:rgba(var(--heat-rgb),var(--heat-opacity,0))}.theme-control{display:flex;align-items:center;gap:var(--space-2);font-size:12px;color:var(--muted)}select:focus-visible{outline:2px solid var(--accent);outline-offset:4px}@media(max-width:760px){.topbar{flex-wrap:wrap;gap:var(--space-2)}}
+
+.topbar-actions{display:flex;align-items:center;flex-wrap:wrap;gap:24px}.account-link{font-size:12px;font-weight:600;color:var(--text);text-decoration:none}.account-link:hover{text-decoration:underline;text-underline-offset:4px}

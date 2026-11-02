@@ -1,0 +1,7 @@
+# Account interface
+
+Routes: /sign-up, /login, and /sign-in (sign-in alias). The same auth module composes reusable labelled field factories and shared toast/icon primitives. The desktop layout pairs the form with an original CSS orbital/portal illustration. Mobile prioritizes the form. Appearance is inherited from the shared theme controller.
+
+Preview buttons validate email and required password; sign-up requires at least 12 characters. Error text is linked with aria-describedby, invalid fields are marked, and the first error receives focus. Password visibility uses Phosphor eye icons and a labelled toggle. Successful preview feedback explicitly says no account/session was created. Passwords are cleared after validation and never sent or stored. Dashboard access remains public.
+
+No registration, login, password recovery, verification, OAuth, wallet proof, credential storage or session cookies are implemented. Do not present these screens as live account access. Before enabling real accounts, choose an authentication provider or implement secure server-side registration and login with credential hashing, CSRF protection, secure session cookies, email verification, rate limits and recovery. Add authorization and tenant isolation tests. Replace the preview labels only when server-backed flows exist. Legal terms/privacy links must be added with owner-approved policies before real registration; no fictitious policies are linked here.

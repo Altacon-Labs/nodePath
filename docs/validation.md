@@ -18,3 +18,7 @@ Added contribution/community/security guides, issue/PR templates, EditorConfig, 
 Revision checks: syntax check, four existing tests, development web/API smoke check, local UI module responses and all font/icon redirect routes passed. Remote CDN files and interactive toast behavior were not browser-tested.
 
 Premium workspace revision: syntax checks, four tests, local web/API smoke check and local asset route checks passed. Added reusable SVG activity chart, cohort table, sample window selection and CSV download. Interactive controls and the visual layout have not been browser-verified in this environment.
+
+Appearance revision: syntax check, four existing tests, local smoke/asset checks and isolated theme behavior checks passed (saved choice, system changes, tab synchronization, invalid preferences and blocked local storage). Theme logic was checked with a simulated browser environment; no visual browser verification is claimed.
+
+Account preview revision: syntax checks, four existing tests, development smoke checks and account route/module checks passed. Isolated DOM simulations checked invalid input, signup password length, password visibility, and explicit demo completion for sign-up and login. No credentials are transmitted or persisted by these modules. Browser preview timed out; no visual or real-browser interaction verification is claimed.
