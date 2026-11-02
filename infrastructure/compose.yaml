@@ -1,0 +1,20 @@
+# Optional local development database; application adapters are not connected yet.
+services:
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: nodepath
+      POSTGRES_PASSWORD: nodepath
+      POSTGRES_DB: nodepath
+    ports:
+      - "127.0.0.1:5432:5432"
+    volumes:
+      - nodepath_postgres:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U nodepath"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+volumes:
+  nodepath_postgres:
+

@@ -1,0 +1,825 @@
+I will structure this as a **product strategy + build specification document** that you can share with a team, mentor, investor, or technical builder.
+
+The document will position the product as a **Web3 Growth Intelligence Platform**, explain the problem, why it matters, product modules, architecture, tools, MVP scope, technical requirements, and roadmap.
+
+---
+
+# Web3 Growth Intelligence Platform  
+## Product Requirement & Build Document
+
+**Working Name:** TBD  
+**Category:** Web3 Analytics Infrastructure / Growth Intelligence Platform  
+**Product Type:** B2B SaaS for Web3 protocols, foundations, ecosystem teams, and growth operators
+
+---
+
+# 1. Product Overview
+
+## Vision
+
+To become the intelligence layer that enables blockchain ecosystems to understand, measure, and improve the journey from first user interaction to sustained onchain participation.
+
+The platform connects fragmented Web2 and Web3 user activity into one measurable growth journey.
+
+It answers the fundamental question every Web3 team struggles with:
+
+> “What actually causes users to adopt, remain active, and create value onchain?”
+
+---
+
+# 2. The Problem
+
+## Current Web3 Growth Problem
+
+Web3 products have access to large amounts of blockchain data:
+
+- Wallet addresses
+- Transactions
+- Smart contract interactions
+- Token movements
+
+However, they lack context.
+
+They know:
+
+> “A wallet interacted with our contract.”
+
+But they do not know:
+
+- Where the user came from
+- What convinced them to try the product
+- Which campaign influenced them
+- Which community converted them
+- Whether they are a real user or a bot
+- Whether they will return
+- Their long-term value
+
+---
+
+# Example Problem
+
+A DeFi protocol launches a campaign.
+
+Results:
+
+- 100,000 website visitors
+- 50,000 wallet connections
+- 20,000 transactions
+
+The team celebrates growth.
+
+But after analysis:
+
+- 70% came from incentive farming
+- 60% never returned
+- 40% were Sybil wallets
+- Only 5,000 users became active participants
+
+The problem:
+
+The ecosystem measured activity.
+
+Not adoption.
+
+---
+
+# 3. Product Thesis
+
+## Core Belief
+
+The future of Web3 growth depends on moving from:
+
+### Vanity Metrics
+
+- Followers
+- Discord members
+- Wallet count
+- Transaction spikes
+
+To:
+
+### Adoption Metrics
+
+- User journey
+- Activation
+- Retention
+- Wallet quality
+- Lifetime value
+- Sustainable behaviour
+
+---
+
+# 4. Product Solution
+
+The platform provides a unified Web3 growth intelligence layer.
+
+It combines:
+
+## Web2 Behaviour Data
+
++
+    
+## Web3 Onchain Behaviour
+
++
+
+## AI-powered Growth Insights
+
+To create a complete user lifecycle view.
+
+---
+
+# 5. Product Architecture Overview
+
+
+```
+                 WEB3 GROWTH INTELLIGENCE PLATFORM
+
+
+                  USER DISCOVERY LAYER
+
+ Twitter/X     Discord     Telegram     Website
+     |            |           |             |
+     ----------------------------------------
+                       |
+                       ↓
+
+              ATTRIBUTION ENGINE
+
+                       |
+                       ↓
+
+              WALLET IDENTITY GRAPH
+
+                       |
+                       ↓
+
+              ONCHAIN ANALYTICS ENGINE
+
+                       |
+                       ↓
+
+        --------------------------------
+
+        |              |               |
+
+    LTV Engine   Retention Engine   Sybil Detection
+
+        |              |               |
+
+        --------------------------------
+
+                       ↓
+
+             GROWTH INTELLIGENCE DASHBOARD
+
+                       ↓
+
+              ACTIONABLE INSIGHTS
+```
+
+---
+
+# 6. Core Product Modules
+
+---
+
+# Module 1:
+# Web3 Multi-Touch Attribution Engine
+
+## Purpose
+
+Understand the complete user journey from discovery to blockchain action.
+
+---
+
+## Problem
+
+Traditional analytics stops at:
+
+- Website visit
+- Click
+- Signup
+
+Web3 continues:
+
+- Wallet connection
+- Token transaction
+- Contract interaction
+- Protocol usage
+
+---
+
+## Solution
+
+Track:
+
+```
+User sees campaign
+
+↓
+
+Visits website
+
+↓
+
+Connects wallet
+
+↓
+
+Completes transaction
+
+↓
+
+Returns and becomes active user
+```
+
+---
+
+## Example Insight
+
+Instead of:
+
+“Twitter generated 50,000 visitors.”
+
+The platform shows:
+
+“Twitter campaign generated:
+
+- 10,000 wallet connections
+- 4,000 first transactions
+- 1,500 retained users after 30 days”
+
+---
+
+## Metrics
+
+- Acquisition source
+- Wallet conversion rate
+- First transaction rate
+- Cost per activated wallet
+- Retention by acquisition channel
+
+---
+
+# Module 2:
+# Wallet Intelligence & Lifetime Value Engine
+
+## Purpose
+
+Understand wallet quality.
+
+---
+
+## Problem
+
+Not every wallet represents a valuable user.
+
+---
+
+## Solution
+
+Create wallet profiles:
+
+Example:
+
+```
+Wallet:
+0x1234
+
+
+Age:
+14 months
+
+Protocols:
+8
+
+Transactions:
+120
+
+Average volume:
+$4,500
+
+Retention:
+180 days
+
+
+Classification:
+
+High Value User
+```
+
+---
+
+## Metrics
+
+Wallet Lifetime Value:
+
+(WLTV)
+
+Factors:
+
+- Transaction frequency
+- Volume
+- Protocol diversity
+- Retention
+- Liquidity contribution
+
+---
+
+# Module 3:
+# Retention & Churn Prediction
+
+## Purpose
+
+Identify users likely to disappear.
+
+---
+
+## Example:
+
+User behaviour:
+
+Week 1:
+10 transactions
+
+Week 2:
+5 transactions
+
+Week 3:
+1 transaction
+
+Prediction:
+
+High churn probability.
+
+---
+
+## Outputs:
+
+- At-risk wallets
+- Returning users
+- Power users
+- Dormant users
+
+---
+
+# Module 4:
+# Sybil & Bot Detection Network
+
+## Purpose
+
+Separate real adoption from artificial activity.
+
+---
+
+## Detection Signals
+
+- Wallet funding relationships
+- Similar transaction timing
+- Identical interaction patterns
+- Cluster behaviour
+- Multiple wallet ownership indicators
+
+---
+
+## Output:
+
+Wallet classification:
+
+```
+Human User
+
+High Confidence
+
+
+Possible Sybil
+
+Medium Confidence
+
+
+Bot Cluster
+
+High Confidence
+```
+
+---
+
+# Module 5:
+# Growth Experiment Dashboard
+
+Connects directly with product experimentation.
+
+Allows teams to answer:
+
+"Did our growth experiment work?"
+
+---
+
+Example:
+
+Experiment:
+
+Added referral rewards.
+
+Before:
+
+Activation:
+12%
+
+After:
+
+Activation:
+18%
+
+Result:
+
++50% improvement
+
+---
+
+# 7. Target Users
+
+---
+
+# Customer Segment 1:
+## Blockchain Protocol Teams
+
+Examples:
+
+- DeFi
+- SocialFi
+- Gaming
+- Infrastructure
+
+Need:
+
+- User analytics
+- Retention measurement
+- Growth optimization
+
+---
+
+# Customer Segment 2:
+## Blockchain Foundations
+
+Need:
+
+- Grant impact measurement
+- Ecosystem health analytics
+- Adoption reporting
+
+---
+
+# Customer Segment 3:
+## Web3 Growth Teams
+
+Need:
+
+- Campaign attribution
+- Community analysis
+- User segmentation
+
+---
+
+# 8. Blockchain Fit Evaluation
+
+## Why Blockchain Is Necessary
+
+Using the Product–Blockchain Fit (PMBF) framework:
+
+---
+
+## Trust Value
+
+Blockchain provides transparent behavioural records.
+
+---
+
+## Data Ownership
+
+User activity is distributed across protocols.
+
+---
+
+## Composability
+
+Users interact across multiple ecosystems.
+
+---
+
+## Verification
+
+Growth claims can be independently verified.
+
+---
+
+Without blockchain:
+
+The product loses access to native user behaviour data.
+
+---
+
+# 9. MVP Scope
+
+Do NOT build everything initially.
+
+---
+
+## Phase 1 MVP
+
+### Wallet Analytics Dashboard
+
+Features:
+
+- Wallet tracking
+- Transaction analysis
+- User segmentation
+- Retention dashboard
+
+---
+
+## Phase 2
+
+Attribution:
+
+- Campaign tracking
+- Referral links
+- Social → Wallet mapping
+
+---
+
+## Phase 3
+
+Advanced Intelligence:
+
+- LTV prediction
+- Churn prediction
+- Sybil detection
+
+---
+
+# 10. Technical Architecture
+
+## Frontend
+
+Recommended:
+
+- Next.js
+- TypeScript
+- Tailwind CSS
+- shadcn/ui
+- Recharts
+
+Dashboard:
+
+- User cohorts
+- Wallet analytics
+- Growth charts
+
+---
+
+# Backend
+
+Recommended:
+
+- Node.js / NestJS
+
+Responsibilities:
+
+- Data processing
+- API management
+- User accounts
+- Analytics engine
+
+---
+
+# Database
+
+## PostgreSQL
+
+Stores:
+
+- Users
+- Projects
+- Campaigns
+- Wallet profiles
+- Metrics
+
+---
+
+# Blockchain Data Layer
+
+Options:
+
+## RPC Providers
+
+- Alchemy
+- Infura
+- QuickNode
+
+Purpose:
+
+Blockchain access.
+
+---
+
+## Indexing
+
+Recommended:
+
+- The Graph
+- Goldsky
+- Subsquid
+
+Purpose:
+
+Query blockchain data efficiently.
+
+---
+
+## Analytics
+
+Recommended:
+
+- Dune API
+- Flipside API
+- Covalent
+- Bitquery
+
+---
+
+# AI Layer
+
+For:
+
+- Growth recommendations
+- Wallet classification
+- Churn prediction
+
+Tools:
+
+- OpenAI API
+- Python ML models
+- TensorFlow / Scikit-learn
+
+---
+
+# Data Visualization
+
+Tools:
+
+- Recharts
+- Apache ECharts
+- Nivo
+
+---
+
+# Authentication
+
+Options:
+
+- Privy
+- Dynamic
+- Web3Auth
+
+---
+
+# 11. Development Tools
+
+## Design
+
+- Figma
+- FigJam
+
+---
+
+## Development
+
+- VS Code
+- GitHub
+- Docker
+- Postman
+
+---
+
+## Deployment
+
+Frontend:
+
+- Vercel
+
+Backend:
+
+- Railway
+- AWS
+- Render
+
+Database:
+
+- Supabase PostgreSQL
+
+---
+
+# 12. Example Dashboard
+
+## Overview
+
+```
+Total Users
+
+120,000
+
+
+Active Wallets
+
+45,000
+
+
+30 Day Retention
+
+38%
+
+
+Average Wallet Value
+
+$1,200
+
+
+Sybil Detection
+
+12% flagged
+```
+
+---
+
+# 13. Success Metrics
+
+Product metrics:
+
+## Adoption
+
+- Number of protocols onboarded
+- Active dashboards
+- Wallets analyzed
+
+---
+
+## Customer Value
+
+- Reduction in wasted marketing spend
+- Increased retention
+- Improved campaign efficiency
+
+---
+
+## Ecosystem Impact
+
+- More sustainable users
+- Better grant accountability
+- Higher quality growth
+
+---
+
+# 14. Competitive Positioning
+
+Current tools solve parts:
+
+| Tool | Solves |
+|-|-|
+| Google Analytics | Web activity |
+| Mixpanel | Product events |
+| Dune | Blockchain analytics |
+| Nansen | Wallet intelligence |
+| Flipside | Crypto analytics |
+
+Our opportunity:
+
+A complete:
+
+**Web2-to-Web3 Growth Intelligence Layer**
+
+---
+
+# 15. Long-Term Vision
+
+Become the:
+
+> “Amplitude + Google Analytics + Nansen for Web3 adoption.”
+
+The platform becomes the operating system for measuring blockchain growth.
+
+---
+
+# Final Product Statement
+
+**We are building a Web3 Growth Intelligence Platform that connects fragmented user journeys across social platforms, communities, applications, and blockchains to help protocols understand adoption, measure real user value, and optimize sustainable growth.**
+
+---
+
+This document is suitable as a starting point for:
+- Product team alignment
+- Investor discussion
+- Fellowship capstone
+- Technical architecture planning
+- Grant application narrative
