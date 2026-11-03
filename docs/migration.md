@@ -44,3 +44,7 @@ The push uses your own GitHub SSH access. No credentials are included or needed 
 
 See validation.md for checks actually run when packaging. Docker and external services are optional and not required by tests. npm run build validates syntax; this dependency-free JavaScript scaffold has no compilation or bundling step.
 
+
+## Guided journey revision
+
+The dashboard entry is now a welcome/setup journey instead of a fixed-metric page. No backend migration or database is required. Workspace data is versioned under nodepath-workspace-v1 in the current browser origin. Older appearance choices remain supported; there was no persisted analytics data in earlier scaffold versions. The optional account previews remain at /login and /sign-up. Git metadata, original history and remote are preserved.

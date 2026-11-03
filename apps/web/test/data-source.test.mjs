@@ -1,0 +1,12 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {readProject,sourceLabel} from '../public/data-source.mjs';
+import {sampleProject} from '@nodepath/mock-data';
+const sample=sampleProject(),local={...sample,id:'own',source:'csv'};
+const reply=body=>async()=>({ok:true,json:async()=>body});
+test('offline sample is populated and labelled as mock',async()=>{const result=await readProject(sample,{fetcher:async()=>{throw Error('offline')}});assert.equal(result.origin,'mock');assert.ok(result.project.events.length);assert.match(sourceLabel(result),/Mock/);});
+test('demo API snapshot uses the same contract as fallback',async()=>{const result=await readProject(sample,{fetcher:reply({version:1,mode:'mock',project:sample})});assert.equal(result.origin,'backend');assert.equal(result.mode,'mock');assert.deepEqual(result.project.events,sample.events);});
+test('live backend data wins including a legitimate empty result',async()=>{const project={...local,source:'backend',events:[]};const result=await readProject(local,{fetcher:reply({version:1,mode:'live',project})});assert.equal(result.origin,'backend');assert.equal(result.mode,'live');assert.equal(result.project.events.length,0);assert.equal(result.project.source,'backend');});
+test('offline personal projects keep imports or cached backend data, never mock wallets',async()=>{for(const source of ['csv','backend','empty']){const p={...local,source,events:source==='empty'?[]:local.events};const result=await readProject(p,{fetcher:async()=>({ok:false,status:503})});assert.equal(result.project,p);assert.notEqual(result.origin,'mock');assert.equal(result.origin,source==='backend'?'cache':'local');}});
+test('auth errors and malformed snapshots do not silently use mock data',async()=>{await assert.rejects(()=>readProject(sample,{fetcher:async()=>({ok:false,status:401})}),/access denied/);await assert.rejects(()=>readProject(sample,{fetcher:reply({version:99,mode:'mock',project:sample})}),/invalid project/);await assert.rejects(()=>readProject(local,{fetcher:reply({version:1,mode:'live',project:{...local,contract:'0x'+'9'.repeat(40)}})}),/invalid project/);});
+test('missing endpoint falls back without altering the saved project',async()=>{const copy=structuredClone(local);const result=await readProject(local,{fetcher:async()=>({ok:false,status:404})});assert.equal(result.origin,'local');assert.deepEqual(local,copy);});

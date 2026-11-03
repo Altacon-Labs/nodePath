@@ -1,32 +1,28 @@
-# Architecture and implementation boundaries
+# Architecture
 
-Browser -> web development server -> API -> future tenant-scoped PostgreSQL repositories.
-RPC/indexing provider -> indexer -> normalized confirmed chain events -> analytics worker -> metric snapshots -> API.
+## Current working path
 
-Current behavior: demo HTTP endpoints, browser rendering, shared pure functions, fixture workers. No database reads/writes, live chain calls, authentication, queue, identity graph or AI integration exist. The development servers bind to loopback by default. Do not expose them as a hosted multi-tenant product.
+Browser onboarding -> project setup -> local CSV import -> validated normalized transaction records -> shared browser analytics model -> Overview / Wallets / Retention -> CSV exports and JSON backup/restore.
 
-## Ownership
+apps/web/public/model.mjs owns CSV parsing, project scope validation, deduplication, period metrics, cohort follow-up windows and backup validation. store.mjs owns the versioned local-storage workspace and in-memory fallback. app.mjs composes screens and routes via URL hashes. components.mjs owns reusable safe DOM factories, cards, charts, tables, empty states, icons and toasts. theme.mjs applies persistent appearance before CSS loads. All user-provided text is rendered with textContent.
 
-- Web owns presentation; it should consume API contracts rather than database tables.
-- API will own authentication, project authorization, wallet queries and metric reads.
-- Indexer will own provider adapters, pagination, block ranges, normalized logs and durable checkpoints.
-- Analytics will own versioned metric definitions and materialized project snapshots.
-- Domain owns portable validation and calculation rules; SDK owns transport contracts.
-- Infrastructure owns deployment configuration; docs own decisions and product scope.
+The UI computes from actual imported records or a clearly labelled sample dataset. There are no mixed hard-coded headline metrics. Hash routes support welcome, setup, overview, wallets, retention, data and settings; filters reset on project changes. Dynamic routes can be reloaded. Account previews remain separate and do not gate the local workflow.
 
-## Data design before persistence
+Local storage is versioned. Backup restoration validates project shape and transaction records before replacing state. Failed storage writes keep in-memory data and show a persistent warning. No passwords, RPC credentials or social identities are collected by the analytics journey.
 
-Use project_id on tenant-owned entities: projects, project_members, tracked_wallets, campaigns, touchpoints, identity_links, cohort_snapshots and metric_snapshots. Chain events may be stored globally but must be joined through authorized project contracts/wallets. Never infer authorization from a caller-supplied project ID.
+## Backend boundaries
 
-Record chain_id, block_number, block_hash, transaction_hash, log_index, occurred_at and ingested_at. Uniqueness is (chain_id, transaction_hash, log_index). Normalize addresses for lookup and retain display/checksum representation separately. Large blockchain integers and token values must use exact numeric or string representations, never floating-point money.
+apps/api is an independent demonstration HTTP service with fixed fixtures; the guided local UI does not use its overview data. workers/indexer and workers/analytics are dry-run entry points. PostgreSQL infrastructure is optional and not wired into the local journey. packages/domain and packages/sdk are future shared backend/transport foundations.
 
-Before a live worker: implement bounded batches, backoff, provider rate limits, finality thresholds, reorg rollback, replay, idempotent writes and atomic checkpoint advancement. Analytics must tolerate replay and update snapshots deterministically. Add a queue only when scheduling and scale require it.
+## Path to hosted multi-tenant operation
 
-## Metric definitions
+Replace the local store with authenticated, tenant-scoped repositories while preserving model semantics. Implement project memberships and server-side authorization for all queries. Select an auth provider, add secure sessions, verification and recovery. Do not use browser project IDs as proof of access.
 
-An active wallet needs a documented qualifying event and time window. Retention needs a cohort start rule and exact return window; the shared retention function computes set overlap only. The demo's 38% is a fixture, not a result of that function. Define valuation currency and price timestamps before adding wallet value. Wallet identity does not prove a unique person. Sybil outputs must carry uncertainty and evidence.
+Implement durable chain events including chain_id, contract, block_number/hash, transaction_hash, log_index, occurred_at and ingested_at. Distinguish transaction-level UI records from log-level event uniqueness. Add bounded ingestion batches, rate limits, finality thresholds, reorg rollback, replay, atomic checkpoints and idempotent writes. Materialize versioned metric snapshots only after the event model is stable.
 
-## Production requirements
+Require consent-based identity linking, tenant isolation tests, signed wallet proof if needed, secrets management, observability, backups and retention/deletion controls before customer data is hosted. Use exact numeric types for future monetary values. No private keys belong in this platform.
 
-Add tenant authorization tests, signed wallet proof with nonce/expiry, secret storage, request validation, quotas, observability, backups, schema migrations and consent/retention/deletion controls before real data. Social-to-wallet linking must be consent based. Do not store private keys. Do not implement predictive scores without a documented evaluation method.
 
+## Backend-aware read adapter
+
+public/data-source.mjs validates project snapshots, chooses backend/local/cache/mock results and classifies failure states. packages/mock-data is the single fixture generator used by both browser fallback and the demo API. Browser import maps resolve that workspace package through an allowlisted local asset. No external runtime dependencies were added. public/ui.mjs centralizes reusable buttons, links and panels alongside the shared chart/table/empty-state/toast components. Per-project request tokens suppress stale responses; source refreshes do not rebuild setup/import/settings forms. Successful local imports invalidate pending reads, and restored workspaces reset connection state.

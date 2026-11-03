@@ -6,5 +6,7 @@
   "scripts": {
     "dev": "node --env-file-if-exists=../../.env server.mjs"
   },
-  "dependencies": {}
+  "dependencies": {
+    "@nodepath/mock-data": "0.1.0"
+  }
 }

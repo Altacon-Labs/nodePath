@@ -7,6 +7,7 @@
     "dev": "node --env-file-if-exists=../../.env src/server.mjs"
   },
   "dependencies": {
-    "@nodepath/domain": "0.1.0"
+    "@nodepath/domain": "0.1.0",
+    "@nodepath/mock-data": "0.1.0"
   }
 }

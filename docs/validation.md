@@ -1,24 +1,20 @@
-# Validation at packaging
+# Validation for guided-journey release
 
-Validated on Windows with Node.js 24.12.0 and npm 11.7.0:
+Environment: Windows, Node 24.12.0, npm 11.7.0.
 
-- npm ci: passed, six local workspace links installed.
-- npm run check and npm run build: passed (syntax checks; no compilation step).
-- npm test: four tests passed: API status/error handling, wallet validation, retention set logic, chain-event identity.
-- Both worker commands: passed in fixture-only dry-run mode.
-- Development launcher smoke check: web page loaded and /v1/overview proxy returned demo data using isolated local ports.
-- Original README copied byte-for-byte from Git HEAD.
-- Original .git files, commit and origin checked against the uploaded archive when packaging.
+- npm run check: JavaScript syntax checks.
+- npm test: 12 tests passed, covering API responses, shared primitives, project validation, CSV scope/date/deduplication, idempotent merge, period metrics/drilldown consistency, retention maturity, sample consistency, backup validation and storage failure fallback.
+- Isolated DOM integration using the real frontend modules: sample exploration, metric drilldown, search empty state, cohort inspection, project creation, initial empty state, invalid/valid CSV imports, source status, backup download, restore and guarded deletion passed.
+- Single-icon appearance behavior checked separately for both directions, saved choice, tab sync and storage failure fallback.
+- Local web routing/asset checks and Git archive integrity verification recorded at packaging.
 
-Not executed: Docker/PostgreSQL startup, hosted GitHub Actions, Node 22 runtime, live provider indexing or a browser visual review. Those are not claimed as validated. There are no live data or production adapters in this scaffold.
+The DOM integration used a simulated document, not a full browser engine. The in-app browser preview failed with a browser-session binding error, so no real-browser visual, mobile viewport or file-picker verification is claimed. CDN font/icon files require network access and were not downloaded here. Node 22, hosted GitHub Actions, Docker, production authentication and live blockchain indexing were not run. They are not claimed as implemented/verified.
 
-## Contribution and UI revision
 
-Added contribution/community/security guides, issue/PR templates, EditorConfig, Git attributes and the design-system guide. Replaced inline UI with reusable modules, 8-point tokens, borderless cards, empty/retry states and dismissible action toasts. Fonts/icons use version-pinned CDN redirects because package downloads were blocked by the environment; no asset download or browser visual verification is claimed.
-Revision checks: syntax check, four existing tests, development web/API smoke check, local UI module responses and all font/icon redirect routes passed. Remote CDN files and interactive toast behavior were not browser-tested.
+Packaging checks: guided HTML, all new local modules/styles and account preview routes returned HTTP 200. Isolated journey and theme checks passed after the final navigation change.
 
-Premium workspace revision: syntax checks, four tests, local web/API smoke check and local asset route checks passed. Added reusable SVG activity chart, cohort table, sample window selection and CSV download. Interactive controls and the visual layout have not been browser-verified in this environment.
+## Backend fallback and reusable UI revision
 
-Appearance revision: syntax check, four existing tests, local smoke/asset checks and isolated theme behavior checks passed (saved choice, system changes, tab synchronization, invalid preferences and blocked local storage). Theme logic was checked with a simulated browser environment; no visual browser verification is claimed.
+18 automated tests pass. New cases cover shared mock snapshots, network fallback, local/cached preservation, valid empty live results, authorization failures and malformed responses. Real HTTP integration started web/API on isolated ports, read the snapshot through the proxy, checked new assets, stopped the API and confirmed populated mock fallback. Isolated journey and theme checks passed. Forms are preserved during background connection updates, and per-project tokens discard stale requests. Responsive CSS was reviewed/extended for 320px through wide desktop screens; real-browser viewport/visual verification remains unavailable and is not claimed.
 
-Account preview revision: syntax checks, four existing tests, development smoke checks and account route/module checks passed. Isolated DOM simulations checked invalid input, signup password length, password visibility, and explicit demo completion for sign-up and login. No credentials are transmitted or persisted by these modules. Browser preview timed out; no visual or real-browser interaction verification is claimed.
+Additional isolated async integration passed: out-of-order backend responses retain the newest snapshot and background refresh preserves the active data-import form.

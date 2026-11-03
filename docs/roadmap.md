@@ -16,3 +16,7 @@ Add wallet-value features, churn modelling, Sybil signals and experiment compari
 
 Provider choice (Alchemy/Infura/QuickNode), indexer vendor, auth provider, hosted database, queue and deployment platform remain decisions. No empty vendor integrations, smart-contract package or deployment workflow has been added because the supplied repository has no code requiring them.
 
+
+## Implemented local journey
+
+Welcome, sample exploration, project setup, CSV imports, computed Overview/Wallets/Retention, drilldowns, period comparisons, filtering, CSV export and versioned JSON backup/restore are now implemented locally. Hosted authentication, live chain ingestion, tenant authorization and background processing remain future backend work. The local workflow no longer depends on the API demo fixtures.

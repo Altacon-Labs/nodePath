@@ -29,4 +29,16 @@ Use a warm neutral canvas, white borderless panels, charcoal text and a restrain
 
 ## Appearance
 
-The top bar provides System, Light and Dark options. System is the default; explicit choices persist locally and synchronize between tabs. A blocking local theme initializer applies the choice before CSS loads. Storage failures safely fall back to in-memory preferences. Semantic theme tokens cover navigation, controls, cards, chart axes/area/line, cohort heatmap, icons, focus styles and toast surfaces. Theme controls use text rather than additional icon assets.
+The top bar has one sun/moon icon button, with only the current mode icon visible. Clicking the sun switches light to dark; clicking the moon switches dark to light. The first visit follows the device preference; clicks persist an explicit light/dark choice locally and synchronize between tabs. A blocking local theme initializer applies the choice before CSS loads. Storage failures safely fall back to in-memory preferences. Semantic theme tokens cover navigation, controls, cards, chart axes/area/line, cohort heatmap, icons, focus styles and toast surfaces. The control uses original Phosphor sun and moon SVG assets and an accessible label describing the destination mode.
+
+## Blue/charcoal refinement
+
+Use a near-black canvas, charcoal cards and blue interaction/chart accents in dark mode; light mode uses white surfaces, cool neutral backgrounds and darker blue accents. All layout panels remain borderless. Responsive layout adapts header actions, navigation, metrics, chart controls, toasts and account forms down to 320px; wide cohort data scrolls inside its table region. The current theme icon is decorative inside a labelled 48px button. No pills, badges or emoji icons are introduced.
+
+## Guided workflows
+
+The welcome screen prioritizes two choices: sample exploration and project creation. The workspace navigation focuses on Overview, Wallets, Retention, Data sources and Settings. Each page starts with a user question or concrete action. Sample/import status stays visible. Definitions accompany metrics, and empty/error states provide a path forward. Project creation, imports, exports, backup restore and settings changes use the shared toast system. Forms use visible labels and validation feedback. All numeric data comes from one project dataset.
+
+## Reusable states and responsive coverage
+
+Shared panel/button/link factories live in public/ui.mjs; charts, tables, icons, toasts and empty states live in components.mjs. Empty states use a consistent spacious layout, title, explanation and contextual recovery action. Source errors preserve saved data and provide retry. Loading status stays visible during checks. Layout rules cover narrow phones, tablet, desktop and wide monitors; dense tables scroll within their own region rather than widening the page. No new pills, card borders or emoji icons were introduced.
